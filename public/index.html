@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Creator - 视频生成工具</title>
+  <meta name="description" content="使用AI生成精彩视频 - 由硅基流动API驱动">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- 添加字体图标库 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 头部区域 -->
+    <header>
+      <div class="logo-title">
+        <h1 data-i18n="title">Video Creator</h1>
+      </div>
+      <div class="language-toggle">
+        <button class="lang-btn active" data-lang="zh">中文</button>
+        <button class="lang-btn" data-lang="en">English</button>
+      </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <div class="main-content">
+      <!-- 左侧控制面板 -->
+      <div class="control-panel">
+        <div class="form-group">
+          <label for="prompt-input" data-i18n="prompt">提示词</label>
+          <textarea id="prompt-input" class="prompt-input" placeholder="请输入视频内容的详细描述..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="model-selector" data-i18n="model">选择模型</label>
+          <select id="model-selector" class="model-selector">
+            <option value="Wan-AI/Wan2.1-T2V-14B">Wan AI 文生视频 (标准版)</option>
+            <option value="Wan-AI/Wan2.1-T2V-14B-Turbo">Wan AI 文生视频 (快速版)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="resolution">分辨率</label>
+          <div class="resolution-options">
+            <div class="resolution-option active" data-resolution="1280x720">16:9 - 1280x720</div>
+            <div class="resolution-option" data-resolution="720x1280">9:16 - 720x1280</div>
+            <div class="resolution-option" data-resolution="960x960">1:1 - 960x960</div>
+          </div>
+        </div>
+
+        <button id="generate-btn" class="generate-btn" data-i18n="generate">生成视频</button>
+
+        <!-- 高级设置 -->
+        <div class="advanced-settings">
+          <div class="settings-toggle">
+            <i class="fa fa-cog"></i>
+            <span data-i18n="advanced">高级设置</span>
+          </div>
+          <div class="settings-content" style="display: none;">
+            <div class="form-group">
+              <label for="negative-prompt" data-i18n="negPrompt">负面提示词</label>
+              <textarea id="negative-prompt" class="prompt-input" placeholder="请输入要避免的内容（可选）" style="min-height: 80px;"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="seed-input" data-i18n="seed">随机种子</label>
+              <input type="number" id="seed-input" class="model-selector" placeholder="留空为随机">
+            </div>
+            <button id="reset-btn" class="generate-btn" style="background-color: #9e9e9e; margin-top: 10px;" data-i18n="reset">重置</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧预览面板 -->
+      <div class="preview-panel">
+        <div class="video-wrapper">
+          <div class="placeholder">
+            <i class="fa fa-film" style="font-size: 48px; margin-bottom: 20px;"></i>
+            <p data-i18n="videoPlaceholder">视频将在这里显示</p>
+          </div>
+          <video controls style="display: none;"></video>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+        </div>
+        <div class="controls">
+          <div class="status">
+            <div class="status-dot"></div>
+            <span class="status-text" data-i18n="status.idle">准备就绪</span>
+          </div>
+          <button class="download-btn" data-i18n="download">下载视频</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部区域 -->
+    <footer>
+      <p data-i18n="footer">© 2023 Video Creator. 由硅基流动API提供支持。</p>
+    </footer>
+  </div>
+
+  <!-- JavaScript 文件 -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
